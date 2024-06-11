@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="test.RunnerTest" time="1.184" tests="19" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/target/test-classes:/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/target/classes:/Users/sheikhumarbanafe/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/sheikhumarbanafe/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/sheikhumarbanafe/.m2/repository/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/mockito/mockito-core/3.7.7/mockito-core-3.7.7.jar:/Users/sheikhumarbanafe/.m2/repository/net/bytebuddy/byte-buddy/1.10.19/byte-buddy-1.10.19.jar:/Users/sheikhumarbanafe/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.19/byte-buddy-agent-1.10.19.jar:/Users/sheikhumarbanafe/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/Users/sheikhumarbanafe/.m2/repository/org/mockito/mockito-junit-jupiter/3.7.7/mockito-junit-jupiter-3.7.7.jar:/Users/sheikhumarbanafe/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar:/Users/sheikhumarbanafe/.m2/repository/org/apache/logging/log4j/log4j-core/2.20.0/log4j-core-2.20.0.jar:/Users/sheikhumarbanafe/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.13.5/jackson-databind-2.13.5.jar:/Users/sheikhumarbanafe/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.13.5/jackson-annotations-2.13.5.jar:/Users/sheikhumarbanafe/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.13.5/jackson-core-2.13.5.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/target/surefire/surefirebooter5092198727485363569.jar /Users/sheikhumarbanafe/Desktop/others/github/fxconvert/target/surefire 2024-06-11T10-22-23_743-jvmRun1 surefire5595522278711046728tmp surefire_0835402917607362840tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/target/test-classes:/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/target/classes:/Users/sheikhumarbanafe/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/sheikhumarbanafe/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/sheikhumarbanafe/.m2/repository/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.jar:/Users/sheikhumarbanafe/.m2/repository/org/mockito/mockito-core/3.7.7/mockito-core-3.7.7.jar:/Users/sheikhumarbanafe/.m2/repository/net/bytebuddy/byte-buddy/1.10.19/byte-buddy-1.10.19.jar:/Users/sheikhumarbanafe/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.19/byte-buddy-agent-1.10.19.jar:/Users/sheikhumarbanafe/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/Users/sheikhumarbanafe/.m2/repository/org/mockito/mockito-junit-jupiter/3.7.7/mockito-junit-jupiter-3.7.7.jar:/Users/sheikhumarbanafe/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar:/Users/sheikhumarbanafe/.m2/repository/org/apache/logging/log4j/log4j-core/2.20.0/log4j-core-2.20.0.jar:/Users/sheikhumarbanafe/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.13.5/jackson-databind-2.13.5.jar:/Users/sheikhumarbanafe/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.13.5/jackson-annotations-2.13.5.jar:/Users/sheikhumarbanafe/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.13.5/jackson-core-2.13.5.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/sheikhumarbanafe"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-10-17"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/sheikhumarbanafe/Desktop/others/github/fxconvert"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/target/surefire/surefirebooter5092198727485363569.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.9+11-LTS-201"/>
+    <property name="user.name" value="sheikhumarbanafe"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.5"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/sheikhumarbanafe/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/b0/87yl2czd68q6jhy685ddk2xm0000gn/T/"/>
+    <property name="idea.version" value="2024.1.1"/>
+    <property name="java.version" value="17.0.9"/>
+    <property name="user.dir" value="/Users/sheikhumarbanafe/Desktop/others/github/fxconvert"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/sheikhumarbanafe/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.9+11-LTS-201"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="test_conversionOfCurrency_forAllAmountOfNonUsdCurrencyInWallet_toAnotherNonUsdCurrencyInWallet_totalCurrencyReducedByOne" classname="test.RunnerTest" time="1.129"/>
+  <testcase name="test_conversionOfCurrency_forSomeAmountOfNonUsdCurrencyInWallet_toAnotherNonUsdCurrencyInWallet_totalCurrencyRemainsTheSame" classname="test.RunnerTest" time="0.004"/>
+  <testcase name="test_userHasNoCurrencyExceptionNotThrown_whenUserHasCurrency" classname="test.RunnerTest" time="0.002"/>
+  <testcase name="test_conversionOfCurrency_forSomeAmountOfNonUsdCurrencyInWallet_toUsdCurrencyInWallet_totalCurrencyRemainsTheSame" classname="test.RunnerTest" time="0.005"/>
+  <testcase name="test_conversionOfCurrency_forAllAmountOfUsdCurrencyInWallet_toAnotherNonUsdCurrencyInWallet_totalCurrencyReducedByOne" classname="test.RunnerTest" time="0.004"/>
+  <testcase name="test_insufficientAmountExceptionThrown_forInsufficientAmountForConversion" classname="test.RunnerTest" time="0.001"/>
+  <testcase name="test_userHasNoCurrencyExceptionThrown_whenUserDoesNotHaveCurrency" classname="test.RunnerTest" time="0.001"/>
+  <testcase name="test_conversionOfCurrency_forSomeAmountOfUsdInWallet_toNonUsdCurrencyInWallet_totalCurrencyRemainsTheSame" classname="test.RunnerTest" time="0.004"/>
+  <testcase name="test_sameCurrencyExceptionNotThrown_forDifferentCurrencies" classname="test.RunnerTest" time="0.001"/>
+  <testcase name="test_conversionOfCurrency_forSomeAmountOfUsdCurrencyInWallet_toNonUsdCurrencyNotInWallet_totalCurrencyIncreasedByOne" classname="test.RunnerTest" time="0.005"/>
+  <testcase name="test_userNotFoundExceptionNotThrown_forExistingUser" classname="test.RunnerTest" time="0.002"/>
+  <testcase name="test_conversionOfCurrency_forSomeAmountOfNonUsdCurrencyInWallet_toNonUsdCurrencyNotInWallet_totalCurrencyIncreasedByOne" classname="test.RunnerTest" time="0.005"/>
+  <testcase name="test_userNotFoundExceptionThrown_forNonExistentUser" classname="test.RunnerTest" time="0.001"/>
+  <testcase name="test_invalidAmountExceptionThrown_forInvalidAmount" classname="test.RunnerTest" time="0"/>
+  <testcase name="test_invalidCurrencyExceptionNotThrown_forExistentCurrency" classname="test.RunnerTest" time="0.001"/>
+  <testcase name="test_insufficientAmountExceptionNotThrown_forSufficientAmountForConversion" classname="test.RunnerTest" time="0.002"/>
+  <testcase name="test_sameCurrencyExceptionThrown_forSameCurrencies" classname="test.RunnerTest" time="0.001"/>
+  <testcase name="test_invalidCurrencyExceptionThrown_forNonExistentCurrency" classname="test.RunnerTest" time="0.001"/>
+  <testcase name="test_conversionOfCurrency_forAllAmountOfNonUsdCurrencyInWallet_toUsdCurrencyInWallet_totalCurrencyReducedByOne" classname="test.RunnerTest" time="0.004"/>
+</testsuite>

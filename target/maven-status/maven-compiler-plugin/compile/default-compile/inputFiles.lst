@@ -1,0 +1,10 @@
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/exceptions/SameCurrencyException.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/entities/Currency.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/exceptions/UserHasNoCurrencyException.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/main/Runner.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/exceptions/InvalidCurrencyException.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/exceptions/InvalidNumberOfComponentsException.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/exceptions/InsufficientAmountForConversionException.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/exceptions/InvalidAmountException.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/entities/User.java
+/Users/sheikhumarbanafe/Desktop/others/github/fxconvert/src/main/java/exceptions/UserNotFoundException.java
