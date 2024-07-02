@@ -28,7 +28,7 @@ For every skipped transaction, the console displays a message that the transacti
 ## Setup
 1. If your local machine has not been configured with the `Eclipse IDE`, follow the installation instructions [here](https://github.com/shumarb/training/blob/main/fdm/software-to-install/EclipseIDEInstallation.md).
 2. If your local machine has not been configured with `Java 17`, follow the installation instructions [here](https://github.com/shumarb/training/blob/main/fdm/software-to-install/Java17Installation.md).
-3. Download the [zip folder](https://github.com/shumarb/projects/blob/main/projects/fxconvert/fxconvert.zip) of the project to your local machine.
+3. Download the [zip folder](https://github.com/shumarb/fxconvert/blob/main/fxconvert.zip) of the project to your local machine.
 2. Unzip the zip file. The unzipped folder is called `fxconvert`.
 3. Open the `Eclipse IDE`.
 4. Select `File`.
