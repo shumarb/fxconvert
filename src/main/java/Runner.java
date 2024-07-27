@@ -37,7 +37,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
@@ -46,6 +45,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.Currency;
 import model.User;
+
 import exceptions.InsufficientAmountForConversionException;
 import exceptions.InvalidAmountException;
 import exceptions.InvalidCurrencyException;
@@ -92,15 +92,12 @@ public class Runner {
 	private static double conversionInvolvingUsd(String currencyType,
 												 String currency,
 												 double amount) {
-
         if (currencyType.equals("convert to USD")) {
 			return amount * currencies.get(currency).getInverseRate();
 		}
-		
 		return amount * currencies.get(currency).getRate();
 	}
-	
-	
+
 	/**
 	 * Convert the user's fromCurrency to the toCurrency.
 	 * And update the values of the currencies in the user's wallet.
@@ -167,7 +164,6 @@ public class Runner {
 		if (user.getCurrencyValueInWallet(fromCurrency) < amountToConvert) {
 			throw new InsufficientAmountForConversionException();
 		}
-		
 	}
 
 	/**
@@ -178,25 +174,21 @@ public class Runner {
 	 * @throws UserHasNoCurrencyException if the user does not have the FROM currency in his/her wallet
 	 */
 	public static void doesUserHaveCurrency(User user, String fromCurrency) throws UserHasNoCurrencyException {
-		
 		if (!user.isCurrencyInWallet(fromCurrency)) {
 			throw new UserHasNoCurrencyException();
 		}
-		
 	}
 
 	/**
 	 * Checks if an amount to be converted is valid.
 	 * 
-	 * @params amount to be converted from the for currency to the to currency.
+	 * @param amountToConvert The amount involved in a conversion.
 	 * @throws InvalidAmountException if the amount to convert is less than or equal to 0.
 	 */
 	public static void isValidAmount(double amountToConvert) throws InvalidAmountException {
-		
 		if (amountToConvert <= 0) {
 			throw new InvalidAmountException();
 		}
-		
 	}
 
 	/**
@@ -272,7 +264,6 @@ public class Runner {
 	 * @throws IOException if there is an error reading or writing to the file system
 	 */
 	private static void deserialization() throws StreamReadException, DatabindException, IOException {
-		
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		/*
@@ -311,10 +302,10 @@ public class Runner {
 	 * @throws InsufficientAmountForConversionException if the amount for conversion is more than the amount of the FROM currency in the user's wallet
 	 */
 	public static void main(String[] args) throws
-            DatabindException,
+            										DatabindException,
 													IOException,
 													NumberFormatException,
-            SameCurrencyException,
+            										SameCurrencyException,
 													InvalidCurrencyException,
 													InvalidAmountException,
 													InvalidNumberOfComponentsException,
@@ -331,7 +322,6 @@ public class Runner {
         
         logger.info("Starting application...");
         while ((transaction = bufferedReader.readLine()) != null) {
-			
 			/*
 			 * Using try-with-resources ensure the resources are automatically closed
 			 * after usage. This prevents resource leaks.
