@@ -16,8 +16,8 @@ import org.mockito.Mock;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
-import entities.Currency;
-import entities.User;
+import model.Currency;
+import model.User;
 import exceptions.InsufficientAmountForConversionException;
 import exceptions.InvalidAmountException;
 import exceptions.InvalidCurrencyException;

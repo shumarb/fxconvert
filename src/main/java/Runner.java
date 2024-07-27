@@ -1,29 +1,29 @@
 /**
+ * -----------------------------------------------------------------------------------------------------
  * Runner.java
- * 
+ * -----------------------------------------------------------------------------------------------------
  * This program serves as an automated currency conversion system that 
  * processes one or more transactions involving one or more users via the following:
- * 
+ * -----------------------------------------------------------------------------------------------------
  * 1. The program validates at least one transaction.
  * Every transaction has four components:
  * 1.1. The user's name.
  * 1.2. The currency to be converted from (fromCurrency).
  * 1.3. The currency to be converted to (toCurrency).
  * 1.4. The amount of the fromCurrency to be converted to the toCurrency.
- * 
+ * -----------------------------------------------------------------------------------------------------
  * 2. A transaction is either valid or invalid.
  * Every invalid transaction is skipped, whilst a currency conversion occurs for a valid transaction.
  * after which th the currencies and amounts in the user's wallet are updated.
- * 
+ * -----------------------------------------------------------------------------------------------------
  * 3. After every transaction, a message will be displayed in the console and stored in a logger.
  * The message displayed indicates either one of the following:
  * 3.1. A valid transaction, and the amount and currencies involved in the conversion.
  * 3.2. An invalid transaction, and the reason that the transaction was skipped.
- * 
+ * -----------------------------------------------------------------------------------------------------
  * @author Sheikh Umar
+ * -----------------------------------------------------------------------------------------------------
  */
-
-package main;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -44,8 +44,8 @@ import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import entities.Currency;
-import entities.User;
+import model.Currency;
+import model.User;
 import exceptions.InsufficientAmountForConversionException;
 import exceptions.InvalidAmountException;
 import exceptions.InvalidCurrencyException;
@@ -59,24 +59,24 @@ import org.apache.logging.log4j.LogManager;
 
 public class Runner {
 	
-	/*
+	/**
 	 * Constant variables named according to the files it is accessing
 	 */
 	private static final String FX_RATES_FILE = "src/main/resources/fx_rates.json";
 	private static final String TRANSACTIONS_FILE = "src/main/resources/transactions.txt";
 	private static final String USERS_FILE = "src/main/resources/users.json";
 	
-	/*
+	/**
 	 * Logger to log message on validity of every transaction
 	 */
 	private static final Logger logger = LogManager.getLogger(Runner.class);
 	
-	/*
+	/**
 	 * List of users from Users.json
 	 */
 	public static List <User> users = new ArrayList <User> ();
 	
-	/*
+	/**
 	 * List of currency and it's respective currency object from fx_rate.json
 	 */
 	public static Map <String, Currency> currencies = new HashMap <String, Currency> ();
@@ -84,17 +84,16 @@ public class Runner {
 	/**
 	 * Currency conversion
 	 * 
-	 * @param type of currency conversion involving USD
-	 * @param currency Currency to apply conversion on
-	 * @param amount involved in the coversion
-	 * @return amount of currency converted to USD
+	 * @param currencyType 	The type of currency involving USD.
+	 * @param currency 		The currency to apply conversion on.
+	 * @param amount 		The amount involved in the conversion.
+	 * @return 				The amount of currency converted to USD
 	 */
-	private static double conversionInvolvingUsd(String currencyType, String currency, double amount) {
-		
-		/*
-		 * Conversion to USD
-		 */
-		if (currencyType.equals("convert to USD")) {
+	private static double conversionInvolvingUsd(String currencyType,
+												 String currency,
+												 double amount) {
+
+        if (currencyType.equals("convert to USD")) {
 			return amount * currencies.get(currency).getInverseRate();
 		}
 		
@@ -103,16 +102,19 @@ public class Runner {
 	
 	
 	/**
-	 * Convert the user's fromCurrency to the toCurrency
-	 * And update the values of the currencies in the user's wallet
+	 * Convert the user's fromCurrency to the toCurrency.
+	 * And update the values of the currencies in the user's wallet.
 	 * 
-	 * @params user in transaction, currency to be converted from, and currency to be converted to (toCurrency), 
-	 * and the amount for conversion
-	 * @throws StreamReadException if there is an error reading the JSON stream
-	 * @throws DatabindException if there is an error binding the JSON data to the object model
-	 * @throws IOException if there is an error reading or writing to the file system
+	 * @param user The user involved in the conversion, currency to be converted from, and currency to be converted to (toCurrency),
+	 * and the amount for conversion.
+	 * @throws StreamReadException if there is an error reading the JSON stream.
+	 * @throws DatabindException if there is an error binding the JSON data to the object model.
+	 * @throws IOException if there is an error reading or writing to the file system.
 	 */
-	public static void currencyConversion(User user, String fromCurrency, String toCurrency, double amountToConvert) throws StreamReadException, DatabindException, IOException {
+	public static void currencyConversion(User user,
+										  String fromCurrency,
+										  String toCurrency,
+										  double amountToConvert) throws StreamReadException, DatabindException, IOException {
 		
 		DecimalFormat df = new DecimalFormat("#.##");
 		double amountToIncreaseToCurrencyBy = 0;
@@ -154,11 +156,14 @@ public class Runner {
 	/**
 	 * Checks if a user has enough value in the from currency for conversion (fromCurrency)
 	 * 
-	 * @params: user's name, currency to be converted from, and amount of currency to be converted from
-	 * @throws InsufficientAmountForConversionException if the amount for conversion is more than the amount of the FROM currency in the user's wallet
+	 * @param user 				The user involved in the currency conversion.
+	 * @param fromCurrency 		The currency to be converted from.
+	 * @param amountToConvert 	The amount of currency to be converted from.
+	 * @throws InsufficientAmountForConversionException if the amount for conversion is more than the amount of the FROM currency in the user's wallet.
 	 */
-	public static void isSufficientAmountForConversion(User user, String fromCurrency, double amountToConvert) throws InsufficientAmountForConversionException {
-		
+	public static void isSufficientAmountForConversion(User user,
+													   String fromCurrency,
+													   double amountToConvert) throws InsufficientAmountForConversionException {
 		if (user.getCurrencyValueInWallet(fromCurrency) < amountToConvert) {
 			throw new InsufficientAmountForConversionException();
 		}
@@ -166,10 +171,10 @@ public class Runner {
 	}
 
 	/**
-	 * Checks if a user has a currency to be converted from (fromCurrency) in his/her wallet
+	 * Checks if a user has a currency to be converted from (fromCurrency) in his/her wallet.
 	 * 
-	 * @param user in the transaction
-	 * @param currency that user wants to convert from
+	 * @param user 				The user involved in the transaction.
+	 * @param fromCurrency 		The convert to convert from.
 	 * @throws UserHasNoCurrencyException if the user does not have the FROM currency in his/her wallet
 	 */
 	public static void doesUserHaveCurrency(User user, String fromCurrency) throws UserHasNoCurrencyException {

@@ -1,0 +1,5 @@
+19:19:30.295 | INFO  | Application has started. Beginning to process transactions.
+19:19:30.504 | INFO  | Valid Transaction: Success! Converted cad100 to usd76.98 for Bob.
+19:19:30.537 | INFO  | Valid Transaction: Success! Converted cad20 to eur15.17 for Susan.
+19:19:30.548 | ERROR | Skipped Transaction: Both the FROM and TO currencies are the same.
+19:19:30.548 | INFO  | All transactions have been processed, and users.json has been updated for valid transactions. Application shut down.
