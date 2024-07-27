@@ -1,5 +1,0 @@
-22:34:14.130 | INFO  | Application has started. Beginning to process transactions.
-22:34:14.405 | INFO  | Valid Transaction: Success! Converted cad100 to usd76.98 for Bob.
-22:34:14.441 | INFO  | Valid Transaction: Success! Converted cad20 to eur15.17 for Susan.
-22:34:14.451 | ERROR | Skipped Transaction: Both the FROM and TO currencies are the same.
-22:34:14.452 | INFO  | All transactions have been processed, and users.json has been updated for valid transactions. Application shut down.
