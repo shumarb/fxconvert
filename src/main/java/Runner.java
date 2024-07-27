@@ -154,7 +154,7 @@ public class Runner {
 	}
 	
 	/**
-	 * Checks if a user has enough value in the from currency for conversion (fromCurrency)
+	 * Checks if a user has enough value in the FROM currency for conversion.
 	 * 
 	 * @param user 				The user involved in the currency conversion.
 	 * @param fromCurrency 		The currency to be converted from.
@@ -186,10 +186,10 @@ public class Runner {
 	}
 
 	/**
-	 * Checks if an amount to be converted is valid
+	 * Checks if an amount to be converted is valid.
 	 * 
-	 * @params amount to be converted from the for currency to the to currency
-	 * @throws InvalidAmountException if the amount to convert is less than or equal to 0
+	 * @params amount to be converted from the for currency to the to currency.
+	 * @throws InvalidAmountException if the amount to convert is less than or equal to 0.
 	 */
 	public static void isValidAmount(double amountToConvert) throws InvalidAmountException {
 		
@@ -200,36 +200,28 @@ public class Runner {
 	}
 
 	/**
-	 * Checks if a currency exists in the forex exchange (fx_rates.json)
+	 * Checks if a currency exists in the forex exchange (fx_rates.json).
 	 * 
-	 * @param currency provided in the transaction
-	 * @throws InvalidCurrencyException if the currency provided does not exist 
+	 * @param currency provided in the transaction.
+	 * @throws InvalidCurrencyException if the currency provided does not exist.
 	 */
 	public static void isValidCurrency(String currency) throws InvalidCurrencyException {
-		
-		/*
-		 * Even though USD is not in the currencies hashmap,
-		 * it is a valid currency because all currency rates are
-		 * based on a comparison against usd (USD currency)
-		 */
-		if (!currency.equals("usd") && !currencies.containsKey(currency)) {
+        if (!currency.equals("usd") && !currencies.containsKey(currency)) {
 			throw new InvalidCurrencyException();
 		}
-		
 	}
 
 	/**
-	 * Checks if two currencies are the same
+	 * Checks if two currencies are the same.
 	 * 
-	 * @params currency to be converted from, and currency to be converted to
-	 * @throws SameCurrencyException if the 2 currencies provided for conversion are the same
+	 * @param toCurrency 	The currency to be converted to.
+	 * @param fromCurrency 	The currency to be converted from.
+	 * @throws SameCurrencyException if the 2 currencies provided for conversion are the same.
 	 */
 	public static void isSameCurrency(String toCurrency, String fromCurrency) throws SameCurrencyException {
-		
 		if (toCurrency.equals(fromCurrency)) {
 			throw new SameCurrencyException();
 		}
-		
 	}
 
 	/**
@@ -239,54 +231,41 @@ public class Runner {
 	 * @throws UserNotFoundException if the user cannot be found
 	 */
 	public static User getsUser(String name) throws UserNotFoundException {
-		
-		for (int i = 0; i < users.size(); i++) {
-			User currentUser = users.get(i);
-			if (currentUser.getName().equals(name)) {
-				return currentUser;
-			}
-		}
-		
+        for (User currentUser : users) {
+            if (currentUser.getName().equals(name)) {
+                return currentUser;
+            }
+        }
 		throw new UserNotFoundException();
 	}
 	
 	/**
-	 * Checks that a transaction has 4 components
+	 * Checks that a transaction has 4 components.
 	 * 
-	 * @param transactionFields: An array containing the components of a transaction
-	 * @throws InvalidNumberOfComponentsException if the transaction does not have 4 components
+	 * @param transaction An array containing the components of a transaction.
+	 * @throws InvalidNumberOfComponentsException if the transaction does not have 4 components.
 	 */
 	private static void isValidTransaction(String[] transaction) throws InvalidNumberOfComponentsException {
-		
 		if (transaction.length != 4) {
 			throw new InvalidNumberOfComponentsException();
 		}
-		
 	}
 	
 	/**
-	 * Serialization is the process of converting a Java object to a data format.
-	 * In this case, the data format is JSON.
-	 * 
-	 * Execute serialization for users.json after a valid transaction
-	 * in order to update the user's profile
+	 * Execution of the serialization for users.json after a valid transaction.
 	 * 
 	 * @throws StreamReadException if there is an error reading the JSON stream
 	 * @throws DatabindException if there is an error binding the JSON data to the object model
 	 * @throws IOException if there is an error reading or writing to the file system
 	 */
 	private static void serialization() throws StreamWriteException, DatabindException, IOException {
-		
 		File destination = new File(USERS_FILE);
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.writeValue(destination, users);
 	}
 	
 	/**
-	 * Deserialization is the process of converting JSON objects into Java object
-	 * 
-	 * Execute deserialization for fx_rates.json and users.json
-	 * Before processing transactions.txt
+	 * Execution of deserialization of fx_rates.json and users.json before processing transactions.
 	 * 
 	 * @throws StreamReadException if there is an error reading the JSON stream
 	 * @throws DatabindException if there is an error binding the JSON data to the object model
@@ -297,44 +276,33 @@ public class Runner {
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		/*
-		 * Deserialize
 		 * Extract every entry in users.json,
 		 * parse it into a User object,
 		 * and add it to the users list
 		 */
 		users = objectMapper.readValue(
-				
 					new File(USERS_FILE),
 					objectMapper.getTypeFactory().constructCollectionType(List.class, User.class)
-					
 				);
 		
 		/*
-		 * Deserialize
 		 * Extract every entry in fx_rates.json,
 		 * form a Currency object, 
 		 * and add it to the currencies hashmap,
 		 * where the key-value mappings are currencyCode-Currency object
 		 */
 		currencies = objectMapper.readValue(
-				
-	            new File(FX_RATES_FILE),
+				new File(FX_RATES_FILE),
 	            objectMapper.getTypeFactory().constructMapType(HashMap.class, String.class, Currency.class)
-	            
 	    );
-		
 	}
 	
 	/**
-	 * Processes every transaction
-	 * For every outcome of a transaction, 
-	 * display its output in console and log it in a logger file
+	 * Processes every transaction.
 	 * 
-	 * @throws StreamReadException if there is an error reading the JSON stream
 	 * @throws DatabindException if there is an error binding the JSON data to the object model
 	 * @throws IOException if there is an error reading or writing to the file system
 	 * @throws NumberFormatException if the string cannot be parsed to a double
-	 * @throws UserNotFoundException if the user cannot be found
 	 * @throws SameCurrencyException if the 2 currencies provided for conversion are the same
 	 * @throws InvalidCurrencyException if the currency provided does not exist
 	 * @throws InvalidAmountException if the amount to convert is less than or equal to 0
@@ -342,16 +310,15 @@ public class Runner {
 	 * @throws UserHasNoCurrencyException if the user does not have the FROM currency in his/her wallet
 	 * @throws InsufficientAmountForConversionException if the amount for conversion is more than the amount of the FROM currency in the user's wallet
 	 */
-	public static void main(String[] args) throws 	StreamReadException, 
-													DatabindException, 
+	public static void main(String[] args) throws
+            DatabindException,
 													IOException,
 													NumberFormatException,
-													UserNotFoundException,
-													SameCurrencyException, 
+            SameCurrencyException,
 													InvalidCurrencyException,
-													InvalidAmountException, 
-													InvalidNumberOfComponentsException, 
-													UserHasNoCurrencyException, 
+													InvalidAmountException,
+													InvalidNumberOfComponentsException,
+													UserHasNoCurrencyException,
 													InsufficientAmountForConversionException {
 		double amount = 0;
 		String username = null;
@@ -362,7 +329,7 @@ public class Runner {
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);	
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         
-        logger.info("Application has started. Beginning to process transactions.");
+        logger.info("Starting application...");
         while ((transaction = bufferedReader.readLine()) != null) {
 			
 			/*
@@ -399,12 +366,12 @@ public class Runner {
 					currencyConversion(user, fromCurrency, toCurrency, amount);
 					
 	        } catch (InsufficientAmountForConversionException e) {
-	        	
-	        	logger.error("Skipped Transaction: " + username + " has insufficient amount of " + fromCurrency + " (FROM currency).");
+
+                logger.error("Skipped Transaction: {} has insufficient amount of {} (FROM currency).", username, fromCurrency);
 	        	
 	        } catch (UserHasNoCurrencyException e) {
-	        	
-	        	logger.error("Skipped Transaction: " + username + " does not have " + fromCurrency + " (FROM currency).");
+
+                logger.error("Skipped Transaction: {} does not have {} (FROM currency).", username, fromCurrency);
 	        	
 	        } catch (InvalidNumberOfComponentsException e) {
 	        	
@@ -419,46 +386,32 @@ public class Runner {
 	        	logger.error("Skipped Transaction: Amount to convert is less than or equal to 0.");
 	        	
 	        } catch (UserNotFoundException e) {
-	        	
-	        	logger.error("Skipped Transaction: User called " + username + " not found.");
+
+                logger.error("Skipped Transaction: User called {} not found.", username);
 	        	
 	        } catch (SameCurrencyException e) {
 	        	
 	        	logger.error("Skipped Transaction: Both the FROM and TO currencies are the same.");	
 	            
-	        } catch (JsonParseException e) {
-	        	
-	        	logger.error("Unable to parse the JSON file.");
-	            
 	        } catch (NumberFormatException e) {
 	        	
 	        	logger.error("Unable to parse string to a double for the amount of conversion.");
 	            
-	        } catch (StreamReadException e) {
-	        	
-	        	logger.error("Unable to parse the JSON file.");
-	            
-	        } catch (DatabindException e) {
-	        	
-	        	logger.error("Unable to parse the JSON file.");
-	            
 	        } catch (JsonProcessingException e) {
-	        	
-	        	logger.error("Unable to parse the JSON file.");
-	            
+
+	        	logger.fatal("Unable to parse the JSON file.");
+
 			} catch (NullPointerException | IOException e) {
-				
-				logger.error("Unable to access the transactions.txt file.");
-	            
+
+				logger.fatal("Unable to access the transactions.txt file.");
+
 	        }
-			
 		}
-		
 		bufferedReader.close();
 		inputStream.close();
 		inputStreamReader.close();
-		logger.info("All transactions have been processed, and users.json has been updated for valid transactions. Application shut down.");
-		
+		logger.info("All transactions have been processed, and users.json has been updated for valid transactions.");
+		logger.info("Shutting down application...");
     }
 
 }
