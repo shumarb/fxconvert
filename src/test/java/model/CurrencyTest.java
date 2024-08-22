@@ -81,7 +81,7 @@ class CurrencyTest {
     }
 
     @Test
-    public void test_currenciesMapIsZero_whenCurrenciesMapIsEmpty() {
+    public void test_currenciesMapIsZero_whencurrenciesMapIsEmpty() {
         assertEquals(0, currenciesMap.size());
     }
 
