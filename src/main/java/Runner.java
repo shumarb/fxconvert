@@ -195,7 +195,7 @@ public class Runner {
 	}
 
 	/**
-	 * Check if the user exists
+	 * Check if the user exists.
 	 * 
 	 * @param name 						The name of the user.
 	 * @throws UserNotFoundException 	The exception thrown if the user cannot be found.
