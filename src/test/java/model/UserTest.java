@@ -1,7 +1,8 @@
 package model;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,34 +14,34 @@ import org.mockito.Mock;
 class UserTest {
 
     @Mock
-    List <User> usersList;
+    List<User> usersList;
 
     @Mock
     User user1;
 
     @BeforeEach
-    void setUp() throws Exception {
-        usersList = new ArrayList <User> ();
+    void setUp() {
+        usersList = new ArrayList<> ();
         user1 = new User("Luke");
     }
 
     @Test
-    public void test_usersListIsEmpty_whenNoUsersAdded() {
+    public void testUsersListIsEmptyWhenNoUsersAdded() {
         assertEquals(0, usersList.size());
     }
 
     @Test
-    public void test_correctUserNameReturned() {
+    public void testCorrectUserNameReturned() {
         assertEquals("Luke", user1.getName());
     }
 
     @Test
-    public void test_incorrectUserNameNotReturned() {
+    public void testIncorrectUserNameNotReturned() {
         assertNotEquals("Harry", user1.getName());
     }
 
     @Test
-    public void test_usersListHasOneUser_WhenOneUserAdded() {
+    public void testUsersListHasOneUserWhenOneUserAdded() {
         user1.addCurrencyToWallet("sgd", 10);
         user1.addCurrencyToWallet("myr", 50);
         usersList.add(user1);
@@ -48,7 +49,7 @@ class UserTest {
     }
 
     @Test
-    public void test_usersListDoesNotHaveMoreThanOneUser_WhenOneUserAdded() {
+    public void testUsersListDoesNotHaveMoreThanOneUserWhenOneUserAdded() {
         user1.addCurrencyToWallet("sgd", 10);
         user1.addCurrencyToWallet("myr", 50);
         usersList.add(user1);
@@ -56,91 +57,91 @@ class UserTest {
     }
 
     @Test
-    public void test_currencyAddedToWallet_returnsTrue_afterAddingCurrencyToWallet() {
+    public void testCurrencyAddedToWalletReturnsTrueAfterAddingCurrencyToWallet() {
         user1.addCurrencyToWallet("cad", 42);
         assertTrue(user1.isCurrencyInWallet("cad"));
     }
 
     @Test
-    public void test_currencyAddedToWallet_doesNotReturnFalse_afterAddingCurrencyToWallet() {
+    public void testCurrencyAddedToWalletDoesNotReturnFalseAfterAddingCurrencyToWallet() {
         user1.addCurrencyToWallet("cad", 42);
         assertNotEquals(user1.isCurrencyInWallet("cad"), false);
     }
 
     @Test
-    public void test_correctCurrencyValueReturned_afterAddingCurrencyToWallet() {
+    public void testCorrectCurrencyValueReturnedAfterAddingCurrencyToWallet() {
         user1.addCurrencyToWallet("idr", 1412);
         assertEquals(1412, user1.getCurrencyValueInWallet("idr"));
     }
 
     @Test
-    public void test_incorrectCurrencyValueNotReturned_afterAddingCurrencyToWallet() {
+    public void testIncorrectCurrencyValueNotReturnedAfterAddingCurrencyToWallet() {
         user1.addCurrencyToWallet("idr", 1412);
         assertNotEquals(131, user1.getCurrencyValueInWallet("idr"));
     }
 
     @Test
-    public void test_currencyValueOfZeroRemoved_afterAddingCurrencyToWallet() {
+    public void testCurrencyValueOfZeroRemovedAfterAddingCurrencyToWallet() {
         user1.addCurrencyToWallet("idr", 0);
         user1.removesCurrencyWithValueOfZero("idr");
         assertEquals(0, user1.getWallet().size());
     }
 
     @Test
-    public void test_currencyValueThatIsNotZeroIsNotRemoved_afterAddingCurrencyToWallet() {
+    public void testCurrencyValueThatIsNotZeroIsNotRemovedAfterAddingCurrencyToWallet() {
         user1.addCurrencyToWallet("idr", 13130);
         user1.removesCurrencyWithValueOfZero("idr");
         assertNotEquals(0, user1.getWallet().size());
     }
 
     @Test
-    public void test_returnValueIsZero_afterAddingCurrencyWithValueZero() {
+    public void testReturnValueIsZeroAfterAddingCurrencyWithValueZero() {
         user1.addCurrencyToWallet("myr", 0);
         assertEquals(0, user1.getCurrencyValueInWallet("myr"));
     }
 
     @Test
-    public void test_currencyValueIsZero_afterAddingCurrencyWithValueZero() {
+    public void testCurrencyValueIsZeroAfterAddingCurrencyWithValueZero() {
         user1.addCurrencyToWallet("myr", 0);
         assertTrue(user1.isValueOfCurrencyInWalletEqualToZero("myr"));
     }
 
     @Test
-    public void test_returnValueIsNotZero_afterAddingCurrencyWithNonZeroValue() {
+    public void testReturnValueIsNotZeroAfterAddingCurrencyWithNonZeroValue() {
         user1.addCurrencyToWallet("myr", 140);
         assertNotEquals(0, user1.getCurrencyValueInWallet("myr"));
     }
 
     @Test
-    public void test_differentUsersHaveDifferentWallets_afterCallToReturnUserWalletInvoked() {
+    public void testDifferentUsersHaveDifferentWalletsAfterCallToReturnUserWalletInvoked() {
         User user2 = new User("Tim");
         user2.addCurrencyToWallet("eur", 1230);
         assertNotEquals(user2.getWallet(), user1.getWallet());
     }
 
     @Test
-    public void test_currencyValueIncreasedCorrectly() {
+    public void testCurrencyValueIncreasedCorrectly() {
         user1.addCurrencyToWallet("sgd", 50);
         user1.increaseCurrencyValueInWallet("sgd", 110);
         assertEquals(160, user1.getCurrencyValueInWallet("sgd"));
     }
 
     @Test
-    public void test_currencyValueDidNotIncreasedIncorrectly() {
+    public void testCurrencyValueDidNotIncreasedIncorrectly() {
         user1.addCurrencyToWallet("sgd", 50);
         user1.increaseCurrencyValueInWallet("sgd", 110);
         assertNotEquals(12310, user1.getCurrencyValueInWallet("sgd"));
     }
 
     @Test
-    public void test_currencyValueDecreasedCorrectly() {
+    public void testCurrencyValueDecreasedCorrectly() {
         user1.addCurrencyToWallet("sgd", 150);
         user1.increaseCurrencyValueInWallet("sgd", 110);
         assertEquals(260, user1.getCurrencyValueInWallet("sgd"));
     }
 
     @Test
-    public void test_currencyValueDidNotDecreasedInCorrectly() {
+    public void testCurrencyValueDidNotDecreasedInCorrectly() {
         user1.addCurrencyToWallet("sgd", 150);
         user1.increaseCurrencyValueInWallet("sgd", 110);
         assertNotEquals(11414, user1.getCurrencyValueInWallet("sgd"));
