@@ -21,7 +21,8 @@ FXConvert is a currency conversion system that supports conversions for 148 curr
 6. Select `Run 'Runner.main()'`.
 7. Check the `console` for messages indicating the results of the currency conversion attempts.
 8. Examine the `logging.log` file created after running the application. Its contents will correspond to the `console` messages.
-9. To `reset users.json` to its original state, run `git restore src/main/resources/users.json` in the terminal.
+9. Check `users.json` for successful currency conversion updates.
+10. To `reset users.json` to its original state, run `git restore src/main/resources/users.json` in the terminal.
 
 ## Tech Stack
 - Programming: Java.
