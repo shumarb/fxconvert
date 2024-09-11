@@ -31,7 +31,7 @@ class CurrencyTest {
     @BeforeEach
     void setUp() {
 
-        currenciesMap = new HashMap <> ();
+        currenciesMap = new HashMap<> ();
 
         eur = new Currency
                 (
