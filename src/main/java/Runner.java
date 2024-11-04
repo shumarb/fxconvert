@@ -98,13 +98,13 @@ public class Runner {
 	/**
 	 * Convert the user's fromCurrency to the toCurrency, and update the values of the currencies in the user's wallet.
 	 * 
-	 * @param user 					The user involved in the conversion.
-	 * @param  fromCurrency 		The currency to be converted from.
-	 * @param toCurrency   			The currency to be converted to.
-	 * @param amount 				The amount for conversion.
-	 * @throws StreamReadException 	The exception thrown if there is an error reading the JSON stream.
-	 * @throws DatabindException 	The exception thrown if there is an error binding the JSON data to the object model.
-	 * @throws IOException 			The exception thrown if there is an error reading or writing to the file system.
+	 * @param 	user 					The user involved in the conversion.
+	 * @param 	fromCurrency 			The currency to be converted from.
+	 * @param 	toCurrency   			The currency to be converted to.
+	 * @param 	amount 					The amount for conversion.
+	 * @throws 	StreamReadException 	The exception thrown if there is an error reading the JSON stream.
+	 * @throws 	DatabindException 		The exception thrown if there is an error binding the JSON data to the object model.
+	 * @throws 	IOException 			The exception thrown if there is an error reading or writing to the file system.
 	 */
 	public static void currencyConversion(User user, String fromCurrency, String toCurrency, double amount) throws StreamReadException, DatabindException, IOException {
 		DecimalFormat df = new DecimalFormat("#.##");
@@ -131,10 +131,10 @@ public class Runner {
 	/**
 	 * Checks if a user has enough value in the FROM currency for conversion.
 	 * 
-	 * @param user 										The user involved in the currency conversion.
-	 * @param fromCurrency 								The currency to be converted from.
-	 * @param amountToConvert 							The amount of currency to be converted from.
-	 * @throws InsufficientAmountForConversionException The exception thrown if the amount for conversion is more than the amount of the FROM currency in the user's wallet.
+	 * @param 	user 										The user involved in the currency conversion.
+	 * @param 	fromCurrency 								The currency to be converted from.
+	 * @param 	amountToConvert 							The amount of currency to be converted from.
+	 * @throws 	InsufficientAmountForConversionException 	The exception thrown if the amount for conversion is more than the amount of the FROM currency in the user's wallet.
 	 */
 	public static void isSufficientAmountForConversion(User user,
 													   String fromCurrency,
@@ -147,9 +147,9 @@ public class Runner {
 	/**
 	 * Checks if a user has a currency to be converted from (fromCurrency) in his/her wallet.
 	 * 
-	 * @param user 							The user involved in the transaction.
-	 * @param fromCurrency 					The convert to convert from.
-	 * @throws UserHasNoCurrencyException 	The exception thrown if the user does not have the FROM currency in his/her wallet.
+	 * @param 	user 							The user involved in the transaction.
+	 * @param 	fromCurrency 					The convert to convert from.
+	 * @throws 	UserHasNoCurrencyException 		The exception thrown if the user does not have the FROM currency in his/her wallet.
 	 */
 	public static void doesUserHaveCurrency(User user, String fromCurrency) throws UserHasNoCurrencyException {
 		if (!user.isCurrencyInWallet(fromCurrency)) {
@@ -160,8 +160,8 @@ public class Runner {
 	/**
 	 * Checks if an amount to be converted is valid.
 	 * 
-	 * @param amountToConvert 			The amount involved in a conversion.
-	 * @throws InvalidAmountException 	The exception thrown if the amount to convert is less than or equal to 0.
+	 * @param 	amountToConvert 			The amount involved in a conversion.
+	 * @throws 	InvalidAmountException 		The exception thrown if the amount to convert is less than or equal to 0.
 	 */
 	public static void isValidAmount(double amountToConvert) throws InvalidAmountException {
 		if (amountToConvert <= 0) {
@@ -172,8 +172,8 @@ public class Runner {
 	/**
 	 * Checks if a currency exists in the forex exchange (fx_rates.json).
 	 * 
-	 * @param currency 						The currency provided in the transaction.
-	 * @throws InvalidCurrencyException 	The exception thrown if the currency provided does not exist.
+	 * @param 	currency 						The currency provided in the transaction.
+	 * @throws 	InvalidCurrencyException 		The exception thrown if the currency provided does not exist.
 	 */
 	public static void isValidCurrency(String currency) throws InvalidCurrencyException {
         if (!currency.equals("usd") && !currencies.containsKey(currency)) {
@@ -184,9 +184,9 @@ public class Runner {
 	/**
 	 * Checks if two currencies are the same.
 	 * 
-	 * @param toCurrency 				The currency to be converted to.
-	 * @param fromCurrency 				The currency to be converted from.
-	 * @throws SameCurrencyException 	The exception thrown if the 2 currencies provided for conversion are the same.
+	 * @param 	toCurrency 					The currency to be converted to.
+	 * @param 	fromCurrency 				The currency to be converted from.
+	 * @throws 	SameCurrencyException 		The exception thrown if the 2 currencies provided for conversion are the same.
 	 */
 	public static void isSameCurrency(String toCurrency, String fromCurrency) throws SameCurrencyException {
 		if (toCurrency.equals(fromCurrency)) {
@@ -197,8 +197,8 @@ public class Runner {
 	/**
 	 * Check if the user exists.
 	 * 
-	 * @param name 						The name of the user.
-	 * @throws UserNotFoundException 	The exception thrown if the user cannot be found.
+	 * @param 	name 						The name of the user.
+	 * @throws 	UserNotFoundException 		The exception thrown if the user cannot be found.
 	 */
 	public static User getsUser(String name) throws UserNotFoundException {
         for (User currentUser : users) {
@@ -212,8 +212,8 @@ public class Runner {
 	/**
 	 * Checks that a transaction has 4 components.
 	 * 
-	 * @param transaction 							An array containing the components of a transaction.
-	 * @throws InvalidNumberOfComponentsException 	The exception thrown if the transaction does not have 4 components.
+	 * @param 	transaction 							An array containing the components of a transaction.
+	 * @throws 	InvalidNumberOfComponentsException 		The exception thrown if the transaction does not have 4 components.
 	 */
 	private static void isValidTransaction(String[] transaction) throws InvalidNumberOfComponentsException {
 		if (transaction.length != 4) {
