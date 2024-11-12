@@ -9,7 +9,9 @@ FXConvert is a currency conversion system that supports conversions for 148 curr
 
 ## Tech Stack
 - Programming: Java.
-- Frameworks & Tools: JUnit, Git.
+- Frameworks & Tools: 
+  - JUnit.
+  - Git.
 
 ## Setup
 1. `Clone` this repository.
