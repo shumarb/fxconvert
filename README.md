@@ -7,6 +7,10 @@ FXConvert is a currency conversion system that supports conversions for 148 curr
 - Git.
 - IntelliJ IDEA.
 
+## Tech Stack
+- Programming: Java.
+- Frameworks & Tools: JUnit, Git.
+
 ## Setup
 1. `Clone` this repository.
 2. Open the `IntelliJ IDE`.
@@ -23,7 +27,3 @@ FXConvert is a currency conversion system that supports conversions for 148 curr
 8. Examine the `logging.log` file created after running the application. Its contents will correspond to the `console` messages.
 9. Check `users.json` for successful currency conversion updates.
 10. To `reset users.json` to its original state, run `git restore src/main/resources/users.json` in the terminal.
-
-## Tech Stack
-- Programming: Java.
-- Frameworks/Tools: JUnit, Git.
